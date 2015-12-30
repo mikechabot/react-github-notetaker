@@ -5,7 +5,7 @@ import Notes from './Notes/Notes';
 import getGithubInfo from '../utils/helpers';
 import Rebase from 're-base';
 
-const base = Rebase.createClass('https://github-note-taker.firebaseio.com/')
+const base = Rebase.createClass('https://blazing-heat-6301.firebaseio.com/')
 
 class Profile extends React.Component {
   constructor(props){
@@ -27,7 +27,7 @@ class Profile extends React.Component {
     base.removeBinding(this.ref);
   }
   init(username){
-    this.ref = base.bindToState(this.props.params.username, {
+    this.ref = base.bindToState(username, {
       context: this,
       asArray: true,
       state: 'notes'

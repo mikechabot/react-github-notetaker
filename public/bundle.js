@@ -24542,7 +24542,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var base = _reBase2.default.createClass('https://github-note-taker.firebaseio.com/');
+	var base = _reBase2.default.createClass('https://blazing-heat-6301.firebaseio.com/');
 
 	var Profile = (function (_React$Component) {
 	  _inherits(Profile, _React$Component);
@@ -24579,7 +24579,7 @@
 	  }, {
 	    key: 'init',
 	    value: function init(username) {
-	      this.ref = base.bindToState(this.props.params.username, {
+	      this.ref = base.bindToState(username, {
 	        context: this,
 	        asArray: true,
 	        state: 'notes'
@@ -24979,14 +24979,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function getRepos(username) {
-		return _axios2.default.get('https://api.github.com/users/' + username + '/repos');
+		return _axios2.default.get('https://api.github.com/users/' + username + '/repos?access_token=7c69085116c61df3dcf9d617c60e98556a1507a4');
 	}
 
 	function getUserInfo(username) {
-		return _axios2.default.get('https://api.github.com/users/' + username);
+		return _axios2.default.get('https://api.github.com/users/' + username + '?access_token=7c69085116c61df3dcf9d617c60e98556a1507a4');
 	}
 
-	// Read only
 	function getGithubInfo(username) {
 		return _axios2.default.all([getRepos(username), getUserInfo(username)]).then(function (arrayOfData) {
 			return { repos: arrayOfData[0].data, bio: arrayOfData[1].data };
